@@ -1,20 +1,20 @@
 import { FlightPlan } from "./FlightPlan"
 
 export interface FlightPlanRouteData extends FlightPlan {
-    filedRoute: FiledRoute
+  filedRoute: FiledRoute
 }
 
 export interface FiledRoute {
-    routeElement: RouteElement[]
+  routeElement: RouteElement[]
 }
 
 export interface RouteElement {
-    position: Position,
-    seqNum: number,
-    airway: string
+  position: Position,
+  seqNum: number,
+  airway: string
 }
 
 export interface Position {
-    designatedPoint: string,
-    pointCoordinate: string
+  designatedPoint: string,
+  pointCoordinate: string
 }
