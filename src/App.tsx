@@ -1,13 +1,38 @@
+import { AppBar, createTheme, ThemeProvider, Toolbar, Typography } from '@mui/material'
 import './App.css'
 import FlightPlanContainer from './component/FlightPlanContainer'
+import { FlightPlanProvider } from './context/FlightPlanContext'
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#2038a0"
+    },
+    secondary: {
+      main: "#e80078"
+    }
+  }
+})
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
-    <>
-      <FlightPlanContainer />
-    </>
+    <FlightPlanProvider>
+      <ThemeProvider theme={theme}>
+        <AppBar>
+          <Toolbar sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}>
+            <Typography variant="h3"
+              align="center">
+                FLIGHT PLAN VIEWER
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <FlightPlanContainer />
+      </ThemeProvider>
+    </FlightPlanProvider>
   )
 }
 
