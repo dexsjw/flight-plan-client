@@ -4,6 +4,7 @@ import flightPlanApi from "../api-service/flight-plan-api";
 import { FlightPlan } from "../model/FlightPlan";
 import { FlightPlanContextType } from "../model/FlightPlanContextType";
 import { GeneralProviderProps } from "../model/GeneralProviderProps";
+import { FlightPlanRouteData } from "../model/FlightPlanRouteData";
 
 const DISPLAY_ALL_PATH = "/displayAll";
 // const SEARCH_ROUTE_PATH = "/search/route";
@@ -20,7 +21,7 @@ export const useFlightPlanContext = () => {
 
 export function FlightPlanProvider({ children }: GeneralProviderProps) {
     const [flightPlans, setFlightPlans] = useState<FlightPlan[]>([]);
-    // const [selectFlightPlanId, setSelectedFlightPlanId] = useState<string>("");
+    // const [flightPlanRouteData, setFlightPlanRouteData] = useState<FlightPlanRouteData>({});
 
     const handleDisplayAllFlightPlans = async () => {
       try {
