@@ -17,7 +17,6 @@ function FlightPlanList() {
   }, [])
 
   const handleFlightPlanClick = (flightPlanId: string) => {
-    console.log(flightPlanId);
     setSelectedFlightPlanId(flightPlanId);
     handleSelectedFlightPlan(flightPlanId);
   }
