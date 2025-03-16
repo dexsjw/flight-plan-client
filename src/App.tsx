@@ -7,10 +7,10 @@ import { FlightPlanProvider } from './context/FlightPlanContext'
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#2038a0"
+      main: "#bb016e"
     },
     secondary: {
-      main: "#e80078"
+      main: "#2038a0"
     }
   }
 })
