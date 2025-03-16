@@ -1,12 +1,11 @@
-import { Box, Button, List, ListItemButton, ListItemText } from "@mui/material";
+import { Box, List, ListItemButton, ListItemText } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useFlightPlanContext } from "../context/FlightPlanContext";
-import SnackbarAlert from "./SnackBarAlert";
 
 function FlightPlanList() {
   const flightPlanContext = useFlightPlanContext();
   const {
-    flightPlans,
+    sortedFlightPlans,
     handleDisplayAllFlightPlans,
     handleSelectedFlightPlan,
   } = flightPlanContext;
@@ -24,13 +23,12 @@ function FlightPlanList() {
   }
 
   return (
-    <Box>
-      <SnackbarAlert />
-      <Button onClick={handleDisplayAllFlightPlans}>Click Me!</Button>
+    <Box component="section">
       <List sx={{
+        maxHeight: "70vh",
         overflow: "auto"
       }}>
-        {flightPlans.map(flightPlan => (
+        {sortedFlightPlans.map(flightPlan => (
           <ListItemButton key={flightPlan._id}
             selected={selectedFlightPlanId === flightPlan._id}
             onClick={() => handleFlightPlanClick(flightPlan._id)}
