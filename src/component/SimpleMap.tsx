@@ -18,7 +18,7 @@ function SimpleMap() {
   const [lineCoordinateArray, setLineCoordinateArray] = useState<[longitude: number, latitude: number][]>([]);
 
   useEffect(() => {
-    if (flightPlanRouteData.filedRoute.routeElement) {
+    if (flightPlanRouteData.filedRoute?.routeElement) {
       setMapDataArray(handleFlightPlanRouteData(flightPlanRouteData));
     }
   }, [flightPlanRouteData]);
