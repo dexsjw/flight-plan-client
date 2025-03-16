@@ -12,12 +12,14 @@ function FlightPlanDisplay() {
         alignItems: "center",
         width: "100%",
         height: "100%"
-      }}>
+      }}
+    >
       <Grid2 container
         sx={{
           width: "100%",
           height: "100%"
-        }}>
+        }}
+      >
         <Grid2 size={9}>
           <SimpleMap />
         </Grid2>
