@@ -1,8 +1,8 @@
 import { AppBar, createTheme, ThemeProvider, Toolbar, Typography } from '@mui/material'
 import './App.css'
 import FlightPlanContainer from './component/FlightPlanContainer'
+import SnackbarAlert from './component/SnackbarAlert'
 import { FlightPlanProvider } from './context/FlightPlanContext'
-import SnackbarAlert from './component/SnackBarAlert'
 
 const theme = createTheme({
   palette: {
