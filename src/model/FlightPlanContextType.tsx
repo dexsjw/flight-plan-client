@@ -4,6 +4,7 @@ import { FlightPlanRouteData } from "./FlightPlanRouteData";
 
 export interface FlightPlanContextType {
   flightPlans: FlightPlan[],
+  sortedFlightPlans: FlightPlan[],
   flightPlanRouteData: FlightPlanRouteData,
   handleDisplayAllFlightPlans: () => Promise<void>,
   handleSelectedFlightPlan: (selectedFlightPlanId: string) => Promise<void>,

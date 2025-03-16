@@ -8,7 +8,7 @@ import { FlightPlanRouteData } from "../model/FlightPlanRouteData";
 import { ErrorResponse } from "../model/ErrorResponse";
 
 const DISPLAY_ALL_PATH = "/displayAll";
-const SEARCH_ROUTE_PATH = "/search/route";
+const SEARCH_ROUTE_PATH = "/search/route/";
 
 const initialFlightPlanRouteDataState: FlightPlanRouteData = {
   _id: "",
@@ -36,6 +36,7 @@ export const useFlightPlanContext = () => {
 
 export function FlightPlanProvider({ children }: ContextProviderProps) {
     const [flightPlans, setFlightPlans] = useState<FlightPlan[]>([]);
+    const [sortedFlightPlans, setSortedFlightPlans] = useState<FlightPlan[]>([]);
     const [flightPlanRouteData, setFlightPlanRouteData] = useState<FlightPlanRouteData>(initialFlightPlanRouteDataState);
     const [errorResponse, setErrorResponse] = useState<ErrorResponse>(initialErrorResponseState)
 
@@ -92,15 +93,23 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
       }
     }
 
+    const handleSearchFlightPlans = (flightNumber: string) => {
+      setSortedFlightPlans(() => {
+        return flightPlans.filter(flightPlan => flightPlan.aircraftIdentification === flightNumber);
+      })
+    }
+
     const handleResetError = () => {
       setErrorResponse(initialErrorResponseState);
     }
 
     const contextValue = {
       flightPlans,
+      sortedFlightPlans,
       flightPlanRouteData,
       handleDisplayAllFlightPlans,
       handleSelectedFlightPlan,
+      handleSearchFlightPlans,
       errorResponse,
       handleResetError
     }
