@@ -68,6 +68,7 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
     }
 
     const handleSelectedFlightPlan = async (selectedFlightPlanId: string) => {
+      console.info("selectedFlightPlanId: ", selectedFlightPlanId);
       try {
         const response: AxiosResponse = await flightPlanApi.get(SEARCH_ROUTE_PATH + selectedFlightPlanId)
         const retrievedFlightPlanRouteData: FlightPlanRouteData = response.data;
@@ -75,7 +76,6 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
       } catch (error) {
         if (axios.isAxiosError(error)) {
           console.error(error);
-          console.log("setting isError: true, ErrorMessage: ", error.message);
           setErrorResponse({
             isError: true,
             status: error.status,
