@@ -2,6 +2,7 @@ import { AppBar, createTheme, ThemeProvider, Toolbar, Typography } from '@mui/ma
 import './App.css'
 import FlightPlanContainer from './component/FlightPlanContainer'
 import { FlightPlanProvider } from './context/FlightPlanContext'
+import SnackbarAlert from './component/SnackBarAlert'
 
 const theme = createTheme({
   palette: {
@@ -18,6 +19,7 @@ function App() {
   return (
     <FlightPlanProvider>
       <ThemeProvider theme={theme}>
+        <SnackbarAlert />
         <AppBar>
           <Toolbar sx={{
             display: "flex",
