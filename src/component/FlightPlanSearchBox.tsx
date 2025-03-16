@@ -10,7 +10,8 @@ function FlightPlanSearchBox() {
 
   return (
     <Box component="section">
-      <TextField fullWidth
+      <TextField 
+        fullWidth
         label="Search"
         value={value}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {

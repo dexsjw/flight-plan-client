@@ -21,11 +21,13 @@ function App() {
       <ThemeProvider theme={theme}>
         <SnackbarAlert />
         <AppBar>
-          <Toolbar sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}>
+          <Toolbar 
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
             <Typography variant="h3"
               align="center">
                 FLIGHT PLAN VIEWER

@@ -5,7 +5,8 @@ import SimpleMap from "./SimpleMap";
 
 function FlightPlanDisplay() {
   return (
-    <Paper elevation={24}
+    <Paper 
+      elevation={24}
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -14,7 +15,8 @@ function FlightPlanDisplay() {
         height: "100%"
       }}
     >
-      <Grid2 container
+      <Grid2 
+        container
         sx={{
           width: "100%",
           height: "100%"

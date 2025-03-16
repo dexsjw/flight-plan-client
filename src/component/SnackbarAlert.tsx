@@ -14,12 +14,14 @@ function SnackbarAlert() {
   }
 
   return (
-    <Snackbar open={errorResponse.isError}
+    <Snackbar 
+      open={errorResponse.isError}
       autoHideDuration={5000}
       onClose={handleClose}
       anchorOrigin={{ vertical: "top", horizontal: "center"}}
     >
-      <Alert severity="error"
+      <Alert 
+        severity="error"
         onClose={handleClose}
       >
         {errorResponse.message}

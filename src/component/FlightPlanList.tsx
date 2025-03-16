@@ -24,13 +24,15 @@ function FlightPlanList() {
 
   return (
     <Box component="section">
-      <List sx={{
-        maxHeight: "70vh",
-        overflow: "auto"
-      }}
-    >
+      <List 
+        sx={{
+          maxHeight: "70vh",
+          overflow: "auto"
+        }}
+      >
         {sortedFlightPlans.map(flightPlan => (
-          <ListItemButton key={flightPlan._id}
+          <ListItemButton 
+            key={flightPlan._id}
             selected={selectedFlightPlanId === flightPlan._id}
             onClick={() => handleFlightPlanClick(flightPlan._id)}
           >

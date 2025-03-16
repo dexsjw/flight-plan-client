@@ -3,7 +3,8 @@ import FlightPlanDisplay from "./FlightPlanDisplay";
 
 function FlightPlanContainer() {
   return (
-    <Container maxWidth="xl"
+    <Container 
+      maxWidth="xl"
       sx={{
         display: "flex",
         justifyContent: "center",
@@ -11,7 +12,8 @@ function FlightPlanContainer() {
         alignContent: "space-evenly"
       }}
     >
-      <Box component="section"
+      <Box 
+        component="section"
         sx={{
           width: "90vw",
           height: "80vh",
