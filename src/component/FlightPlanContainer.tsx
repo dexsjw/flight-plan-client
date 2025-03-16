@@ -13,7 +13,9 @@ function FlightPlanContainer() {
       <Box component="section"
         sx={{
           width: "90vw",
-          height: "80vh"
+          height: "80vh",
+          maxWidth: "90vw",
+          maxHeight: "80vh"
         }}>
         <FlightPlanDisplay />
       </Box>
