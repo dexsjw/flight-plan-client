@@ -26,7 +26,17 @@ function FlightPlanDisplay() {
           <SimpleMap />
         </Grid2>
         <Grid2 size={3}>
-          <Stack spacing={1}>
+          <Stack 
+            spacing={1}
+            sx={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              alignContent: "center"
+            }}
+          >
             <FlightPlanSearchBox />
             <FlightPlanList />
           </Stack>

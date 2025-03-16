@@ -9,7 +9,12 @@ function FlightPlanSearchBox() {
   const [value, setValue] = useState("");
 
   return (
-    <Box component="section">
+    <Box 
+      component="section"
+      sx={{
+        width: "90%"
+      }}
+    >
       <TextField 
         fullWidth
         label="Search"

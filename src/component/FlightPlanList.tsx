@@ -23,7 +23,12 @@ function FlightPlanList() {
   }
 
   return (
-    <Box component="section">
+    <Box 
+      component="section"
+      sx={{
+        width: "100%"
+      }}
+    >
       <List 
         sx={{
           maxHeight: "60vh",
