@@ -9,12 +9,19 @@ export interface FiledRoute {
 }
 
 export interface RouteElement {
-  position: Position,
+  position?: Position,
   seqNum: number,
-  airway: string
+  airway: string,
+  pointCoordinate: string
 }
 
 export interface Position {
-  designatedPoint: string,
-  pointCoordinate: string
+  designatedPoint: string
+}
+
+export interface SimpleMapData {
+  airway: string,
+  point: string,
+  longitude: number,
+  latitude: number
 }
