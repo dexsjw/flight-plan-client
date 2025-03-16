@@ -45,6 +45,7 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
         const response: AxiosResponse = await flightPlanApi.get(DISPLAY_ALL_PATH);
         const retrievedFlightPlans: FlightPlan[] = response.data;
         setFlightPlans(retrievedFlightPlans);
+        setSortedFlightPlans(retrievedFlightPlans);
       } catch (error) {
         if (axios.isAxiosError(error)) {
           console.error(error);
@@ -93,9 +94,9 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
       }
     }
 
-    const handleSearchFlightPlans = (flightNumber: string) => {
+    const handleSearchFlightPlans = (searchTerm: string) => {
       setSortedFlightPlans(() => {
-        return flightPlans.filter(flightPlan => flightPlan.aircraftIdentification === flightNumber);
+        return flightPlans.filter(flightPlan => flightPlan.aircraftIdentification.includes(searchTerm));
       })
     }
 

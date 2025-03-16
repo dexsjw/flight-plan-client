@@ -8,6 +8,7 @@ export interface FlightPlanContextType {
   flightPlanRouteData: FlightPlanRouteData,
   handleDisplayAllFlightPlans: () => Promise<void>,
   handleSelectedFlightPlan: (selectedFlightPlanId: string) => Promise<void>,
+  handleSearchFlightPlans: (searchTerm: string) => void,
   errorResponse: ErrorResponse
   handleResetError: () => void
 }
