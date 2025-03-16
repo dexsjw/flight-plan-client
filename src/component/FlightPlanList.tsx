@@ -26,7 +26,7 @@ function FlightPlanList() {
     <Box component="section">
       <List 
         sx={{
-          maxHeight: "70vh",
+          maxHeight: "60vh",
           overflow: "auto"
         }}
       >

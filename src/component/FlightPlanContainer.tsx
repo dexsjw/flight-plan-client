@@ -16,9 +16,9 @@ function FlightPlanContainer() {
         component="section"
         sx={{
           width: "90vw",
-          height: "80vh",
+          height: "75vh",
           maxWidth: "90vw",
-          maxHeight: "80vh"
+          maxHeight: "75vh"
         }}
       >
         <FlightPlanDisplay />
