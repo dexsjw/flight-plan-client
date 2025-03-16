@@ -27,7 +27,8 @@ function FlightPlanList() {
       <List sx={{
         maxHeight: "70vh",
         overflow: "auto"
-      }}>
+      }}
+    >
         {sortedFlightPlans.map(flightPlan => (
           <ListItemButton key={flightPlan._id}
             selected={selectedFlightPlanId === flightPlan._id}
