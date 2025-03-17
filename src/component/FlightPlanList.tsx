@@ -8,6 +8,7 @@ function FlightPlanList() {
     sortedFlightPlans,
     handleDisplayAllFlightPlans,
     handleSelectedFlightPlan,
+    handleResetSelectedFlightPlan,
     isLoading
   } = flightPlanContext;
 
@@ -37,22 +38,30 @@ function FlightPlanList() {
         }} 
       />}
       {!isLoading && 
-        <List 
-          sx={{
-            maxHeight: "60vh",
-            overflow: "auto"
-          }}
-        >
-          {sortedFlightPlans.map(flightPlan => (
-            <ListItemButton 
-              key={flightPlan._id}
-              selected={selectedFlightPlanId === flightPlan._id}
-              onClick={() => handleFlightPlanClick(flightPlan._id)}
-            >
-              <ListItemText primary={flightPlan.aircraftIdentification}/>
-            </ListItemButton>
-          ))}
-        </List>
+        <Box component="section">
+          <Button 
+            variant="contained"
+            onClick={handleResetSelectedFlightPlan}
+          >
+            Reset
+          </Button>
+          <List 
+            sx={{
+              maxHeight: "50vh",
+              overflow: "auto"
+            }}
+          >
+            {sortedFlightPlans.map(flightPlan => (
+              <ListItemButton 
+                key={flightPlan._id}
+                selected={selectedFlightPlanId === flightPlan._id}
+                onClick={() => handleFlightPlanClick(flightPlan._id)}
+              >
+                <ListItemText primary={flightPlan.aircraftIdentification}/>
+              </ListItemButton>
+            ))}
+          </List>
+        </Box>
       }
     </Box>
   )

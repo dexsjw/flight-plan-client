@@ -112,6 +112,10 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
         setIsLoading(false);
       }
     }
+    
+    const handleResetSelectedFlightPlan = () => {
+      setFlightPlanRouteData(initialFlightPlanRouteDataState);
+    }
 
     const handleSearchFlightPlans = (searchTerm: string) => {
       setSortedFlightPlans(() => {
@@ -129,6 +133,7 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
       flightPlanRouteData,
       handleDisplayAllFlightPlans,
       handleSelectedFlightPlan,
+      handleResetSelectedFlightPlan,
       handleSearchFlightPlans,
       errorResponse,
       handleResetError,
