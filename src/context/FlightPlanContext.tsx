@@ -20,6 +20,7 @@ const initialFlightPlanRouteDataState: FlightPlanRouteData = {
 
 export const initialErrorResponseState: ErrorResponse = {
   isError: false,
+  severity: "",
   status: 0,
   message: ""
 }
@@ -51,6 +52,7 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
           console.error(error);
           setErrorResponse({
             isError: true,
+            severity: "error",
             status: error.status,
             message: error.message
           })
@@ -73,11 +75,21 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
         const response: AxiosResponse = await flightPlanApi.get(SEARCH_ROUTE_PATH + selectedFlightPlanId)
         const retrievedFlightPlanRouteData: FlightPlanRouteData = response.data;
         setFlightPlanRouteData(retrievedFlightPlanRouteData);
+        if (!retrievedFlightPlanRouteData.filedRoute) {
+          setErrorResponse(prevState => {
+            return {
+              ...prevState,
+              isError: true,
+              message: "There is no filed route for this flight"
+            }
+          })
+        }
       } catch (error) {
         if (axios.isAxiosError(error)) {
           console.error(error);
           setErrorResponse({
             isError: true,
+            severity: "error",
             status: error.status,
             message: error.message
           })

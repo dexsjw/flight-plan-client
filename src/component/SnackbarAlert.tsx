@@ -21,7 +21,7 @@ function SnackbarAlert() {
       anchorOrigin={{ vertical: "top", horizontal: "center"}}
     >
       <Alert 
-        severity="error"
+        severity={errorResponse.severity === "error" ? "error" : "warning"}
         onClose={handleClose}
       >
         {errorResponse.message}
