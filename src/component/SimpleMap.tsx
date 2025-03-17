@@ -25,17 +25,17 @@ function SimpleMap() {
 
 
   const handleFlightPlanRouteData = (flightPlanRouteData: FlightPlanRouteData): SimpleMapData[] => {
-    const markerDataArr: SimpleMapData[] = [];
+    const simpleMapDataArr: SimpleMapData[] = [];
 
     flightPlanRouteData.filedRoute.routeElement.map(routeElement => {
-      markerDataArr.push(extractMarkerData(routeElement));
+      simpleMapDataArr.push(extractMarkerData(routeElement));
     })
 
-    populateLineCoordinateArray(markerDataArr);
-    populateZoomCenter(markerDataArr);
+    populateLineCoordinateArray(simpleMapDataArr);
+    populateZoomCenter(simpleMapDataArr);
 
-    console.log(markerDataArr);
-    return markerDataArr;
+    console.log(simpleMapDataArr);
+    return simpleMapDataArr;
   }
 
   const extractMarkerData = (routeElement: RouteElement): SimpleMapData => {
@@ -59,23 +59,41 @@ function SimpleMap() {
     }
   }
 
-  const populateLineCoordinateArray = (markerDataArr: SimpleMapData[]) => {
+  const populateLineCoordinateArray = (simpleMapDataArr: SimpleMapData[]) => {
     const lineCoordinates: [longitude: number, latitude: number][] = [];
-    markerDataArr.map(markerData => {
-      lineCoordinates.push([markerData.longitude, markerData.latitude]);
+    simpleMapDataArr.map(simpleMapData => {
+      lineCoordinates.push([simpleMapData.longitude, simpleMapData.latitude]);
     })
     console.log(lineCoordinates);
     setLineCoordinateArray(lineCoordinates);
   }
 
-  const populateZoomCenter = (markerDataArr: SimpleMapData[]) => {
-    if (markerDataArr.length > 0 && markerDataArr[0].point !== UNKNOWN_POINT) {
-      const {longitude, latitude} = markerDataArr[0];
+  const populateZoomCenter = (simpleMapDataArr: SimpleMapData[]) => {
+    if (simpleMapDataArr.length > 0 && simpleMapDataArr[0].point !== UNKNOWN_POINT) {
+      const {longitude, latitude} = simpleMapDataArr[0];
       setZoomCenter([longitude , latitude]);
     } else {
       setZoomCenter([103.81, 1.35]);
     }
   }
+
+  // const populateLineFromToCoordinate = () => {
+  //   const lineComponent = [];
+  //   for (let i = 0; i < lineCoordinateArray.length; i++) {
+  //     if (i + 1 > lineCoordinateArray.length) {
+  //       return;
+  //     }
+  //     lineComponent.push(
+  //       <Line
+  //         from={[lineCoordinateArray[i][0], lineCoordinateArray[i][1]]}
+  //         to={[lineCoordinateArray[i + 1][0], lineCoordinateArray[i + 1][1]]}
+  //         stroke="#2fa6eb"
+  //         strokeWidth={5}
+  //       />
+  //     );
+  //   }
+  //   return lineComponent;
+  // }
 
   return (
     <Box 
@@ -138,27 +156,49 @@ function SimpleMap() {
               </text>
             </Marker>
           ))}
+          {/* {simpleMapDataArray.map((simpleMapData, index) => {
+            if (index + 1 > simpleMapDataArray.length) {
+              return;
+            }
+            console.log(JSON.stringify(simpleMapData));
+            console.log(index);
+            // const toLonCoordinate = simpleMapDataArray[index + 1].longitude;
+            // const toLatCoordinate = simpleMapDataArray[index + 1].latitude;
+            return (
+              <Line
+                key={simpleMapData.point}
+                from={[simpleMapData.longitude, simpleMapData.latitude]}
+                to={[simpleMapData.longitude, simpleMapData.latitude]}
+                stroke="#2fa6eb"
+                strokeWidth={5}
+              />
+            )
+          })} */}
           <Line 
             coordinates={lineCoordinateArray}
             stroke="#2fa6eb"
             strokeWidth={5}
           />
-          {simpleMapDataArray.map(simpleMapData => (
-            <Annotation
-              subject={[simpleMapData.longitude, simpleMapData.latitude]}
-              dx={-90}
-              dy={-30}
-              connectorProps={{
-                stroke: "#FF5533",
-                strokeWidth: 3,
-                strokeLinecap: "round"
-              }}
-            >
-              <text x="-8" textAnchor="end" alignmentBaseline="middle" fill="#F53">
-                {simpleMapData.airway}
-              </text>
-            </Annotation>
-          ))}
+          {simpleMapDataArray.map(simpleMapData => {
+            console.log(simpleMapData);
+            return (
+              <Annotation
+                key={simpleMapData.point}
+                subject={[simpleMapData.longitude, simpleMapData.latitude]}
+                dx={-90}
+                dy={-30}
+                connectorProps={{
+                  stroke: "#FF5533",
+                  strokeWidth: 3,
+                  strokeLinecap: "round"
+                }}
+              >
+                <text x="-8" textAnchor="end" alignmentBaseline="middle" fill="#F53">
+                  {simpleMapData.airway}
+                </text>
+              </Annotation>
+            )})
+          }
         </ZoomableGroup>
       </ComposableMap>
     </Box>
