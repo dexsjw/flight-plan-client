@@ -5,7 +5,7 @@ import { useFlightPlanContext } from "../context/FlightPlanContext";
 import { FlightPlanRouteData, SimpleMapData, RouteElement } from "../model/FlightPlanRouteData";
 import { useEffect, useState } from "react";
 
-// 2fa6eb
+// Line coordinates change
 const UNKNOWN_POINT: string = "UNKNOWN";
 const markerOffset: number = 15;
 
@@ -64,6 +64,7 @@ function SimpleMap() {
     markerDataArr.map(markerData => {
       lineCoordinates.push([markerData.longitude, markerData.latitude]);
     })
+    console.log(lineCoordinates);
     setLineCoordinateArray(lineCoordinates);
   }
 
