@@ -39,9 +39,11 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
     const [flightPlans, setFlightPlans] = useState<FlightPlan[]>([]);
     const [sortedFlightPlans, setSortedFlightPlans] = useState<FlightPlan[]>([]);
     const [flightPlanRouteData, setFlightPlanRouteData] = useState<FlightPlanRouteData>(initialFlightPlanRouteDataState);
-    const [errorResponse, setErrorResponse] = useState<ErrorResponse>(initialErrorResponseState)
+    const [errorResponse, setErrorResponse] = useState<ErrorResponse>(initialErrorResponseState);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleDisplayAllFlightPlans = async () => {
+      setIsLoading(true);
       try {
         const response: AxiosResponse = await flightPlanApi.get(DISPLAY_ALL_PATH);
         const retrievedFlightPlans: FlightPlan[] = response.data;
@@ -66,10 +68,13 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
             }
           })
         }
+      } finally {
+        setIsLoading(false);
       }
     }
 
     const handleSelectedFlightPlan = async (selectedFlightPlanId: string) => {
+      setIsLoading(true);
       console.info("selectedFlightPlanId: ", selectedFlightPlanId);
       try {
         const response: AxiosResponse = await flightPlanApi.get(SEARCH_ROUTE_PATH + selectedFlightPlanId)
@@ -103,6 +108,8 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
             }
           })
         }
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -124,7 +131,8 @@ export function FlightPlanProvider({ children }: ContextProviderProps) {
       handleSelectedFlightPlan,
       handleSearchFlightPlans,
       errorResponse,
-      handleResetError
+      handleResetError,
+      isLoading
     }
 
     return (

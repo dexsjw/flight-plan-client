@@ -1,4 +1,4 @@
-import { Box, List, ListItemButton, ListItemText } from "@mui/material";
+import { Box, Button, CircularProgress, List, ListItemButton, ListItemText } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useFlightPlanContext } from "../context/FlightPlanContext";
 
@@ -8,6 +8,7 @@ function FlightPlanList() {
     sortedFlightPlans,
     handleDisplayAllFlightPlans,
     handleSelectedFlightPlan,
+    isLoading
   } = flightPlanContext;
 
   const [selectedFlightPlanId, setSelectedFlightPlanId] = useState<string>("");
@@ -25,25 +26,34 @@ function FlightPlanList() {
     <Box 
       component="section"
       sx={{
-        width: "100%"
+        width: "100%",
+        height: "60vh"
       }}
     >
-      <List 
+      {isLoading && <CircularProgress 
+        size={75}
         sx={{
-          maxHeight: "60vh",
-          overflow: "auto"
-        }}
-      >
-        {sortedFlightPlans.map(flightPlan => (
-          <ListItemButton 
-            key={flightPlan._id}
-            selected={selectedFlightPlanId === flightPlan._id}
-            onClick={() => handleFlightPlanClick(flightPlan._id)}
-          >
-            <ListItemText primary={flightPlan.aircraftIdentification}/>
-          </ListItemButton>
-        ))}
-      </List>
+          marginTop: 20
+        }} 
+      />}
+      {!isLoading && 
+        <List 
+          sx={{
+            maxHeight: "60vh",
+            overflow: "auto"
+          }}
+        >
+          {sortedFlightPlans.map(flightPlan => (
+            <ListItemButton 
+              key={flightPlan._id}
+              selected={selectedFlightPlanId === flightPlan._id}
+              onClick={() => handleFlightPlanClick(flightPlan._id)}
+            >
+              <ListItemText primary={flightPlan.aircraftIdentification}/>
+            </ListItemButton>
+          ))}
+        </List>
+      }
     </Box>
   )
 }
