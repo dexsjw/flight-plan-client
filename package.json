@@ -2,6 +2,7 @@
   "name": "flight-plan-client",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://dexsjw.github.io/flight-plan-client/",
   "type": "module",
   "scripts": {
     "dev": "vite",
