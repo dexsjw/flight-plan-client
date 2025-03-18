@@ -18,7 +18,7 @@ It is meant to work in conjunction with Flight Plan Server. You can find the rep
 - **Flight Plans API:** Retrieves all flight plans.
   - Endpoint: `https://flight-plan-server-5b865429270e.herokuapp.com/flight-plan/displayAll`
 - **Flight Route API:** Provides data on airways used in flight routes.
-  - Endpoint: `https://flight-plan-server-5b865429270e.herokuapp.com/flight-plan//search/route/{id}`
+  - Endpoint: `https://flight-plan-server-5b865429270e.herokuapp.com/flight-plan/search/route/{id}`
 
 *Note: Server might not always be running.*
 
