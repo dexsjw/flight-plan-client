@@ -1,55 +1,115 @@
-# flight-plan-client
-# React + TypeScript + Vite
+# Flight Plan Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+The **Flight Plan Client** is a web application designed to visualize flight routes by interacting with aviation APIs. Users can select a flight and view its planned route on a global map. Additionally, an optional feature to propose and display alternate flight routes might be implemented in the future.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **List All Air-Routes:** Retrieve and display all available flight plans.
+- **Search by Callsign:** Search for specific flight plans using the aircraft's callsign.
+- **Display Flight Route:** Visualize the selected flight's route on a global map.
+- **Propose Alternate Routes (Not implemented):** Generate and display alternative routes from departure to destination.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## APIs Utilized
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Flight Plans API:** Retrieves all flight plans.
+  - Endpoint: `https://flight-plan-server-5b865429270e.herokuapp.com/flight-plan/displayAll`
+- **Flight Route API:** Provides data on airways used in flight routes.
+  - Endpoint: `https://flight-plan-server-5b865429270e.herokuapp.com/flight-plan//search/route/{id}`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+*Note: Server might not always be running.*
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Prerequisites
+
+- **Node.js:** Ensure you have the latest LTS version installed.
+- **npm or yarn:** Package managers for JavaScript.
+- **Docker:** For containerization and deployment.
+
+### Installation
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/dexsjw/flight-plan-client.git
+   cd flight-plan-client
+   ```
+
+2. **Install Dependencies:**
+
+- Using npm:
+
+   ```bash
+   npm install
+   ```
+
+- Or using yarn:
+
+   ```bash
+   yarn install
+   ```
+
+## Running the Application
+
+**Development Mode:**
+
+   ```bash
+   npm run dev
+   ```
+Or:
+
+   ```bash
+   yarn build
+   ```
+
+**Preview Production Build:**
+   ```bash
+   npm run preview
+   ```
+Or:
+
+   ```bash
+   yarn preview
+   ```
+
+## Docker Deployment
+
+1. **Build Docker Image:**
+
+   ```bash
+   docker build -t flight-plan-client .
+   ```
+
+1. **Run Docker Container:**
+
+   ```bash
+   docker run -d -p 3000:3000 flight-plan-client
+   ```
+
+Access the application at http://localhost:3000
+
+## Continuous Integration and Deployment
+
+This project employs GitHub Actions for CI/CD:
+
+- .github/workflows/ci.yml: Defines the CICD pipeline for building the application and handles deployment to the chosen platform.
+
+Ensure you configure the necessary secrets in your GitHub repository settings for seamless deployment.
+
+## Technologies Used
+Frontend:
+- React
+- Vite
+
+Containerization:
+- Docker
+
+CI/CD:
+- Github Actions
+- Github Pages
+
+Libraries:
+- Axios
+- react-simple-maps
