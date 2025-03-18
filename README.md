@@ -4,6 +4,8 @@
 
 The **Flight Plan Client** is a web application designed to visualize flight routes by interacting with aviation APIs. Users can select a flight and view its planned route on a global map. Additionally, an optional feature to propose and display alternate flight routes might be implemented in the future.
 
+It is meant to work in conjunction with Flight Plan Server. You can find the repository here: https://github.com/dexsjw/flight-plan-server
+
 ## Features
 
 - **List All Air-Routes:** Retrieve and display all available flight plans.
